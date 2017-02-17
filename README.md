@@ -1,46 +1,46 @@
 Test technique njuko.com
 ========================
 
-Description
-------------
+# Description
 
 Ce test technique à pour but d'évaluer les compétences en développement Web sur le framework ZF3 à l'aide de l'ORM Doctrine 2
 
 Le but de ce test est de réaliser les étapes suivantes :
 
 1. Faire fonctionner le bouton de supression d'un participant
-
-2. Compléter l'édition d'un utilisateur
-
+2. Compléter l'édition d'un participant
 3. Rajouter la possibilité de saisir le n° de dossard pour un participant
-
-4. Rajouter la possibilité de changer l'événement auquel participe un inscrit
-
+4. Rajouter la possibilité de changer l'événement d'un participant
 5. Saisir le temps de passage d'un participant
-
 6. Créer des classements Homme, Femme, Sexe
-
 7. Rendre les classements des participants "triable"
 
-A savoir
-------------
+# Information
 
-La mise à jour du modèle ce fait en ligne de commande en utilisant doctrine avec la commande (executée à la racine du projet) : ./vendor/bin/doctrine-module orm:schema-tool:update --force
+Si vous avez un problème avec les short_open_tag :
+http://php.net/manual/fr/ini.core.php
 
-La génération de proxies (spécifiques à Doctrine) : ./vendor/bin/doctrine-module orm:generate-proxies
+Lorsque vous aurez initialisé le projet, vous pourrez récupérer des datas à stocker dans votre base de données dans l'encart bleu.
 
-Les dépendances sont gérées à l'aide de composer : composer.phar install --dev
+Pour configurer les accès à votre base de données :
+/config/autoload/doctrine.local.php
 
-Contact
-------------
+Si vous avez un problème avec votre IDE, supprimer le répertoire .idea à la racine du projet.
+
+La mise à jour du modèle se fait en ligne de commande en utilisant doctrine avec la commande (executée à la racine du projet) :
+./vendor/bin/doctrine-module orm:schema-tool:update --force
+
+La génération de proxies (spécifiques à Doctrine) :
+./vendor/bin/doctrine-module orm:generate-proxies
+
+Les dépendances sont gérées à l'aide de composer : 
+composer.phar install --dev
+
+# Contact
+
 techtest@njuko.com
-
 skype ribes_david
-
 tel 0630194957
-
-
-
 
 # Aide Supplémentaire
 

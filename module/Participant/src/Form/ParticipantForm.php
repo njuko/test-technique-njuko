@@ -1,10 +1,10 @@
 <?php
 
-namespace User\Form;
+namespace Participant\Form;
 
 use Zend\Form\Form;
 
-class UserForm extends Form
+class ParticipantForm extends Form
 {
     public function __construct($name = null)
     {

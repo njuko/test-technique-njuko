@@ -26,6 +26,6 @@ return [
     'DoctrineORMModule',
     'ZendDeveloperTools',
     'Application',
-    'User',
+    'Participant',
     'Classement'
 ];

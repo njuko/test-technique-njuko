@@ -1,6 +1,6 @@
 <?php
 
-namespace User;
+namespace Participant;
 
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
@@ -9,12 +9,12 @@ use Zend\ServiceManager\Factory\InvokableFactory;
 return [
     'router' => [
         'routes' => [
-            'user' => [
+            'participant' => [
                 'type' => Literal::class,
                 'options' => [
-                    'route'    => '/user',
+                    'route'    => '/participant',
                     'defaults' => [
-                        'controller' => Controller\UserController::class,
+                        'controller' => Controller\ParticipantController::class,
                         'action'     => 'index',
                     ],
                 ],
@@ -25,7 +25,7 @@ return [
                         'options'   =>  array(
                             'route' =>  '/list[/:parameters]',
                             'defaults'  =>  array(
-                                'controller' => Controller\UserController::class,
+                                'controller' => Controller\ParticipantController::class,
                                 'action'    =>  'list'
                             )
                         )
@@ -35,18 +35,18 @@ return [
                         'options'   =>  array(
                             'route' =>  '/generate-bib-numbers',
                             'defaults'  =>  array(
-                                'controller' => Controller\UserController::class,
+                                'controller' => Controller\ParticipantController::class,
                                 'action'    =>  'generate-bib-numbers'
                             )
                         )
                     ),
-                    'user-form'   =>  array(
+                    'participant-form'   =>  array(
                         'type'    => Segment::class,
                         'options'   =>  array(
-                            'route' =>  '/user-form[/:id]',
+                            'route' =>  '/participant-form[/:id]',
                             'defaults'  =>  array(
-                                'controller' => Controller\UserController::class,
-                                'action'    =>  'user-form'
+                                'controller' => Controller\ParticipantController::class,
+                                'action'    =>  'participant-form'
                             )
                         )
                     ),
@@ -55,7 +55,7 @@ return [
                         'options'   =>  array(
                             'route' =>  '/delete[/:id]',
                             'defaults'  =>  array(
-                                'controller' => Controller\UserController::class,
+                                'controller' => Controller\ParticipantController::class,
                                 'action'    =>  'delete'
                             )
                         )
@@ -66,7 +66,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\UserController::class => InvokableFactory::class,
+            Controller\ParticipantController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [

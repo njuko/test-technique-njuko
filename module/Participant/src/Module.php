@@ -1,11 +1,11 @@
 <?php
 
-namespace User;
+namespace Participant;
 
-use Application\Entity\User;
+use Application\Entity\Participant;
 use Doctrine\ORM\EntityManager;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
-use User\Form\UserForm;
+use Participant\Form\ParticipantForm;
 use Zend\ServiceManager\ServiceManager;
 
 class Module
@@ -20,15 +20,15 @@ class Module
     {
         return array(
             "factories" => array(
-                'user_form' => function (ServiceManager $serviceManager) {
+                'participant_form' => function (ServiceManager $serviceManager) {
 
                     /** @var EntityManager $entityManager */
                     $entityManager = $serviceManager->get("doctrine.entitymanager.orm_default");
                     /** @var \Zend\Form\Form $form */
-                    $form = new UserForm();
+                    $form = new ParticipantForm();
 
                     $form->setHydrator(new DoctrineHydrator($entityManager));
-                    $form->setObject(new User());
+                    $form->setObject(new Participant());
 
                     return $form;
                 },

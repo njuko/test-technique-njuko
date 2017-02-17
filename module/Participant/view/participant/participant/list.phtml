@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12 text-center">
-        <h1>Liste des utilisateurs</h1>
+        <h1>Liste des participants</h1>
     </div>
 </div>
 <div class="row mt-20">
@@ -12,8 +12,8 @@
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu">
-                <li><a href="<?= $this->url('user/user-form') ?>">Ajouter un utilisateur</a></li>
-                <li><a href="<?= $this->url('user/generate-bib-numbers') ?>">Générer les numéros de dossards</a></li>
+                <li><a href="<?= $this->url('participant/participant-form') ?>">Ajouter un utilisateur</a></li>
+                <li><a href="<?= $this->url('participant/generate-bib-numbers') ?>">Générer les numéros de dossards</a></li>
             </ul>
         </div>
 
@@ -51,8 +51,8 @@
                                 </td>
                                 <td><?=$participant->getEvent()->getName()?></td>
                                 <td>
-                                    <a class="btn btn-sm btn-default" href="<?= $this->url('user/user-form', array('id' => $participant->getId())) ?>">Editer</a>
-                                    <a class="btn btn-sm btn-default" href="<?= $this->url('user/delete', array('id' => $participant->getId())) ?>">Supprimer</a>
+                                    <a class="btn btn-sm btn-default" href="<?= $this->url('participant/participant-form', array('id' => $participant->getId())) ?>">Editer</a>
+                                    <a class="btn btn-sm btn-default" href="<?= $this->url('participant/delete', array('id' => $participant->getId())) ?>">Supprimer</a>
                                 </td>
                             </tr>
                         <?php } ?>

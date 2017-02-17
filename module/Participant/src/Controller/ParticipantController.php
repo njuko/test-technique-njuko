@@ -1,14 +1,14 @@
 <?php
 
-namespace User\Controller;
+namespace Participant\Controller;
 
-use Application\Entity\User;
 use Doctrine\ORM\EntityManager;
+use Zend\Http\Request;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\ServiceManager\ServiceManager;
 use Zend\View\Model\ViewModel;
-use Zend\Form\FormElementManagerFactory;
 
-class UserController extends AbstractActionController
+class ParticipantController extends AbstractActionController
 {
     public function indexAction()
     {
@@ -21,7 +21,7 @@ class UserController extends AbstractActionController
         /** @var EntityManager $entityManager */
         $entityManager = $serviceManager->get("doctrine.entitymanager.orm_default");
 
-        $participants = $entityManager->getRepository('Application\Entity\User')->findAll();
+        $participants = $entityManager->getRepository('Application\Entity\Participant')->findAll();
 
         return new ViewModel(
             array(
@@ -31,27 +31,28 @@ class UserController extends AbstractActionController
 
     }
 
-    public function userFormAction(){
+    public function participantFormAction(){
 
         $serviceManager = $this->getEvent()->getApplication()->getServiceManager();
         /** @var EntityManager $entityManager */
         $entityManager = $serviceManager->get("doctrine.entitymanager.orm_default");
 
         /** @var \Zend\Form\Form $form */
-        $form = $serviceManager->get('FormElementManager')->get('user_form');
+        $form = $serviceManager->get('FormElementManager')->get('participant_form');
 
         $id = (int) $this->params()->fromRoute('id', 0);
 
-        /** @var \Application\Entity\User $user */
+        /** @var \Application\Entity\Participant $participant */
         if (0 !== $id) {
             try {
-                $user = $entityManager->getRepository('Application\Entity\User')->find($id);
-                $form->bind($user);
+                $participant = $entityManager->getRepository('Application\Entity\Participant')->find($id);
+                $form->bind($participant);
             } catch (\Exception $e) {
-                return $this->redirect()->toRoute('user/list');
+                return $this->redirect()->toRoute('participant/list');
             }
         }
 
+        /** @var Request $request */
         $request = $this->getRequest();
 
         if (!$request->isPost()) {
@@ -64,16 +65,17 @@ class UserController extends AbstractActionController
             return ['form' => $form];
         }else{
 
-            $user = $form->getData();
+            $participant = $form->getData();
 
             /** TODO Modification Evenement (forcer pour le moment) */
+            /** @var \Application\Entity\Event $event */
             $event = $entityManager->getRepository('Application\Entity\Event')->find(1);
-            $user->setEvent($event);
+            $participant->setEvent($event);
 
-            $entityManager->persist($user);
+            $entityManager->persist($participant);
             $entityManager->flush();
 
-            return $this->redirect()->toRoute('user/list');
+            return $this->redirect()->toRoute('participant/list');
 
         }
 
@@ -82,13 +84,13 @@ class UserController extends AbstractActionController
 
     public function generateBibNumbersAction(){
 
-        return $this->redirect()->toRoute('user/list');
+        return $this->redirect()->toRoute('participant/list');
 
     }
 
     public function deleteAction(){
 
-        return $this->redirect()->toRoute('user/list');
+        return $this->redirect()->toRoute('participant/list');
 
     }
 }
