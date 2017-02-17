@@ -1,3 +1,47 @@
+Test technique njuko.com
+========================
+
+Description
+------------
+
+Ce test technique à pour but d'évaluer les compétences en développement Web sur le framework ZF3 à l'aide de l'ORM Doctrine 2
+
+Le but de ce test est de réaliser les étapes suivantes :
+
+1. Faire fonctionner le bouton de supression d'un participant
+
+2. Compléter l'édition d'un utilisateur
+
+3. Rajouter la possibilité de saisir le n° de dossard pour un participant
+
+4. Rajouter la possibilité de changer l'événement auquel participe un inscrit
+
+5. Saisir le temps de passage d'un participant
+
+6. Créer des classements Homme, Femme, Sexe
+
+7. Rendre les classements des participants "triable"
+
+A savoir
+------------
+
+La mise à jour du modèle ce fait en ligne de commande en utilisant doctrine avec la commande (executée à la racine du projet) : ./vendor/bin/doctrine-module orm:schema-tool:update --force
+
+La génération de proxies (spécifiques à Doctrine) : ./vendor/bin/doctrine-module orm:generate-proxies
+
+Les dépendances sont gérées à l'aide de composer : composer.phar install --dev
+
+Contact
+------------
+techtest@njuko.com
+
+skype ribes_david
+
+tel 0630194957
+
+
+
+
 # ZendSkeletonApplication
 
 ## Introduction
