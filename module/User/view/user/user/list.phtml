@@ -1,0 +1,65 @@
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h1>Liste des utilisateurs</h1>
+    </div>
+</div>
+<div class="row mt-20">
+    <div class="col-md-12 text-center">
+        <div class="btn-group">
+            <button type="button" class="btn btn-danger">Action</button>
+            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="<?= $this->url('user/user-form') ?>">Ajouter un utilisateur</a></li>
+                <li><a href="<?= $this->url('user/generate-bib-numbers') ?>">Générer les numéros de dossards</a></li>
+            </ul>
+        </div>
+
+        <div class="table-responsive mt-20">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>Nom</td>
+                        <td>Prénom</td>
+                        <td>Sexe</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if($this->participants){ ?>
+                        <?php
+                        /** @var \Application\Entity\User $participant */
+                        foreach($this->participants as $participant){ ?>
+                            <tr>
+                                <td><?=$participant->getId()?></td>
+                                <td><?=$participant->getFirstname()?></td>
+                                <td><?=$participant->getLastname()?></td>
+                                <td><?php
+                                        switch($participant->getSex()) {
+                                            case "male":
+                                                echo "Homme";
+                                                break;
+                                            case "female":
+                                                echo "Femme";
+                                                break;
+                                        }
+                                    ?>
+                                </td>
+                                <td><?=$participant->getEvent()->getName()?></td>
+                                <td>
+                                    <a class="btn btn-sm btn-default" href="<?= $this->url('user/user-form', array('id' => $participant->getId())) ?>">Editer</a>
+                                    <a class="btn btn-sm btn-default" href="<?= $this->url('user/delete', array('id' => $participant->getId())) ?>">Supprimer</a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    <?php } ?>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
