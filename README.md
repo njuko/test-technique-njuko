@@ -12,7 +12,7 @@ Le but de ce test est de réaliser les étapes suivantes :
 3. Rajouter la possibilité de saisir le n° de dossard pour un participant
 4. Rajouter la possibilité de changer l'événement d'un participant
 5. Saisir le temps de passage d'un participant
-6. Créer des classements Homme, Femme, Sexe
+6. Créer des classements : Général, et par sexe
 7. Rendre les classements des participants "triable"
 
 # Information
