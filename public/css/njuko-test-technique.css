@@ -3,8 +3,7 @@ html, body {
 .main-container{
     margin-top:65px;
     background:rgba(255, 255, 255, 0.8);
-    padding-bottom:50px;
-
+    padding-bottom:20px;
 }
 .navbar-njuko{
     background:#2d353c;

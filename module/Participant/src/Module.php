@@ -19,7 +19,7 @@ class Module
     public function getFormElementConfig()
     {
         return array(
-            "factories" => array(
+            "factories" => [
                 'participant_form' => function (ServiceManager $serviceManager) {
 
                     /** @var EntityManager $entityManager */
@@ -32,7 +32,7 @@ class Module
 
                     return $form;
                 },
-            )
+            ]
         );
     }
 }

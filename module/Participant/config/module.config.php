@@ -2,9 +2,9 @@
 
 namespace Participant;
 
+use Participant\Controller\ParticipantControllerFactory;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
-use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     'router' => [
@@ -66,7 +66,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\ParticipantController::class => InvokableFactory::class,
+            Controller\ParticipantController::class => ParticipantControllerFactory::class
         ],
     ],
     'view_manager' => [

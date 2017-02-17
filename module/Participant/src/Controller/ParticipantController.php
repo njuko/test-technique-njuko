@@ -5,11 +5,21 @@ namespace Participant\Controller;
 use Doctrine\ORM\EntityManager;
 use Zend\Http\Request;
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\ServiceManager\ServiceManager;
 use Zend\View\Model\ViewModel;
 
 class ParticipantController extends AbstractActionController
 {
+
+    /** @var EntityManager $entityManager */
+    private $entityManager;
+    private $formElementManager;
+
+    public function __construct($entityManager, $formElementManager)
+    {
+        $this->entityManager = $entityManager;
+        $this->formElementManager = $formElementManager;
+    }
+
     public function indexAction()
     {
         return new ViewModel();
@@ -17,11 +27,8 @@ class ParticipantController extends AbstractActionController
 
     public function listAction()
     {
-        $serviceManager = $this->getEvent()->getApplication()->getServiceManager();
-        /** @var EntityManager $entityManager */
-        $entityManager = $serviceManager->get("doctrine.entitymanager.orm_default");
 
-        $participants = $entityManager->getRepository('Application\Entity\Participant')->findAll();
+        $participants = $this->entityManager->getRepository('Application\Entity\Participant')->findAll();
 
         return new ViewModel(
             array(
@@ -33,19 +40,15 @@ class ParticipantController extends AbstractActionController
 
     public function participantFormAction(){
 
-        $serviceManager = $this->getEvent()->getApplication()->getServiceManager();
-        /** @var EntityManager $entityManager */
-        $entityManager = $serviceManager->get("doctrine.entitymanager.orm_default");
-
         /** @var \Zend\Form\Form $form */
-        $form = $serviceManager->get('FormElementManager')->get('participant_form');
+        $form = $this->formElementManager->get('participant_form');
 
         $id = (int) $this->params()->fromRoute('id', 0);
 
         /** @var \Application\Entity\Participant $participant */
         if (0 !== $id) {
             try {
-                $participant = $entityManager->getRepository('Application\Entity\Participant')->find($id);
+                $participant = $this->entityManager->getRepository('Application\Entity\Participant')->find($id);
                 $form->bind($participant);
             } catch (\Exception $e) {
                 return $this->redirect()->toRoute('participant/list');
@@ -69,11 +72,11 @@ class ParticipantController extends AbstractActionController
 
             /** TODO Modification Evenement (forcer pour le moment) */
             /** @var \Application\Entity\Event $event */
-            $event = $entityManager->getRepository('Application\Entity\Event')->find(1);
+            $event = $this->entityManager->getRepository('Application\Entity\Event')->find(1);
             $participant->setEvent($event);
 
-            $entityManager->persist($participant);
-            $entityManager->flush();
+            $this->entityManager->persist($participant);
+            $this->entityManager->flush();
 
             return $this->redirect()->toRoute('participant/list');
 
