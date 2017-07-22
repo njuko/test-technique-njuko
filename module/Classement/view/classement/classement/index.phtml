@@ -39,6 +39,9 @@
                                 <td>
                                     <a class="btn btn-sm btn-default" href="<?= $this->url('participant/participant-form', array('id' => $participant->getId())) ?>">Editer</a>
                                     <a class="btn btn-sm btn-default" href="<?= $this->url('participant/delete', array('id' => $participant->getId())) ?>">Supprimer</a>
+                                    <a href="<?= $this->url('classement/tri', array('parameters' =>'nom')) ?>">Tri par nom</a>
+                                    <a href="<?= $this->url('classement/tri', array('parameters' =>'prenom')) ?>">Tri par prénom</a>
+                                    <a href="<?= $this->url('classement/tri', array('parameters' =>'dossard')) ?>">Tri par numéro de dossard</a>
                                 </td>
                             </tr>
                         <?php } ?>
