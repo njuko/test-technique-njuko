@@ -24,7 +24,7 @@ class Event
     protected $dateEvent;
     
     /**
-     * @var \Datetime $TempsDePassage
+     * @var \Datetime $tempsDePassage
      * @ORM\Column(type="datetime")
      */
     protected $TempsDePassage;
@@ -78,7 +78,7 @@ class Event
     }
     
     /**
-     * @return \mixed
+     * @return \Datetime
      */
     public function getTempsDePassage()
     {
@@ -86,7 +86,7 @@ class Event
     }
 
     /**
-     * @param \mixed$TempsDePassage
+     * @param \Datetime $TempsDePassage
      */
     public function setTempsDePassage($tempsDePassage)
     {
