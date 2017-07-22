@@ -22,6 +22,9 @@ class Participant
 
     /** @ORM\Column(type="string") */
     protected $sex;
+    
+    /** @ORM\Column(type="string") */
+    protected $NumeroDossard;
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Entity\Event")
@@ -94,6 +97,23 @@ class Participant
     {
         $this->sex = $sex;
     }
+    
+    /**
+     * @return mixed
+     */
+    public function getNumeroDossard()
+    {
+        return $this->NumeroDossard;
+    }
+
+    /**
+     * @param mixed $NumeroDossard
+     */
+    public function setNumeroDossard($NumeroDossard)
+    {
+        $this->NumeroDossard = $NumeroDossard;
+    }
+
 
     /**
      * @return Event
