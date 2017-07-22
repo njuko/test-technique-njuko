@@ -60,6 +60,14 @@ class ParticipantForm extends Form
                 'label' => 'Numéro Dossard',
             ],
         ]);
+        
+        $this->add([
+            'name'    => 'Evenement',
+            'type'    => 'Text',
+            'options' => [
+                'label' => 'Evènement',
+            ],
+        ]);
 
 
         $this->add([
