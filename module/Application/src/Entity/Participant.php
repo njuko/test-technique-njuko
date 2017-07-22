@@ -128,7 +128,7 @@ class Participant
      */
     public function setEvent($event)
     {
-        $this->event = $event;
+        $this->event = $event
     }
 
 }
