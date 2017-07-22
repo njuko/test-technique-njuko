@@ -11,6 +11,8 @@ class ClassementController extends AbstractActionController
     {
 
         /** TODO : Implementer les classements */
+        
+        $participant = $this-> entityManager-> getRepository('Application/Entity/Participant')-> findAll();
 
         return new ViewModel();
     }
