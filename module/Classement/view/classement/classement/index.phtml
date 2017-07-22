@@ -2,4 +2,49 @@
     <div class="col-md-12 text-center">
         <h1>Classements</h1>
     </div>
+    <div class="table-responsive mt-20">
+    <table class="table">
+                <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>Nom</td>
+                        <td>Prénom</td>
+                        <td>Sexe</td>
+                        <td>Numéro Dossard</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if($this->participants){ ?>
+                        <?php
+                        /** @var \Application\Entity\User $participant */
+                        foreach($this->participants as $participant){ ?>
+                            <tr>
+                                <td><?=$participant->getId()?></td>
+                                <td><?=$participant->getFirstname()?></td>
+                                <td><?=$participant->getLastname()?></td>
+                                <td><?=$participant->getNumeroDossard()?></td>
+                                <td><?php
+                                        switch($participant->getSex()) {
+                                            case "male":
+                                                echo "Homme";
+                                                break;
+                                            case "female":
+                                                echo "Femme";
+                                                break;
+                                        }
+                                    ?>
+                                </td>
+                                <td><?=$participant->getEvent()->getName()?></td>
+                                <td>
+                                    <a class="btn btn-sm btn-default" href="<?= $this->url('participant/participant-form', array('id' => $participant->getId())) ?>">Editer</a>
+                                    <a class="btn btn-sm btn-default" href="<?= $this->url('participant/delete', array('id' => $participant->getId())) ?>">Supprimer</a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    <?php } ?>
+
+                </tbody>
+            </table>
+        </div>
 </div>
