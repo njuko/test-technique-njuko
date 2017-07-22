@@ -26,7 +26,7 @@
                         <td>Prénom</td>
                         <td>Sexe</td>
                         <td>Numéro Dossard</td>
-                        <td>Evènement</td>
+                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,7 +39,6 @@
                                 <td><?=$participant->getFirstname()?></td>
                                 <td><?=$participant->getLastname()?></td>
                                 <td><?=$participant->getNumeroDossard()?></td>
-                                <td><?=$participant->getEvenement()?></td>
                                 <td><?php
                                         switch($participant->getSex()) {
                                             case "male":
