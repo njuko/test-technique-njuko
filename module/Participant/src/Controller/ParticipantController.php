@@ -32,7 +32,7 @@ class ParticipantController extends AbstractActionController
 
         return new ViewModel(
             array(
-                "participants" => $participants
+                "participants" => $participants 
             )
         );
 
