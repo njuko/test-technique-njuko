@@ -62,10 +62,18 @@ class ParticipantForm extends Form
         ]);
         
         $this->add([
-            'name'    => 'Evenement',
+            'name'    => 'Event',
             'type'    => 'Text',
             'options' => [
-                'label' => 'Evènement',
+                'label' => 'Event',
+            ],
+        ]);
+        
+        $this->add([
+            'name'    => 'TempsDePassage',
+            'type'    => 'Text',
+            'options' => [
+                'label' => 'Temps de passage',
             ],
         ]);
 
