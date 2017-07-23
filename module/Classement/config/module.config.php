@@ -18,6 +18,9 @@ return [
                         'action'     => 'index',
                     ],
                 ],
+                'child_routes' =>array('tri' => array( 'type' => Segment::class, 'options' => array( 'route => '/tri[/:parameters]', 'defaults' => array( 'controller' => Controller\ClassementController::class, 'action' => 'tri'))
+                ),
+                ),
             ]
         ],
     ],

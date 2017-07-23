@@ -22,6 +22,12 @@ class Event
      * @ORM\Column(type="datetime")
      */
     protected $dateEvent;
+    
+    /**
+     * @var \Datetime $tempsDePassage
+     * @ORM\Column(type="datetime")
+     */
+    protected $TempsDePassage;
 
     /**
      * @return mixed
@@ -69,6 +75,22 @@ class Event
     public function setDateEvent($dateEvent)
     {
         $this->dateEvent = $dateEvent;
+    }
+    
+    /**
+     * @return \Datetime
+     */
+    public function getTempsDePassage()
+    {
+        return $this->tempsDePassage;
+    }
+
+    /**
+     * @param \Datetime $TempsDePassage
+     */
+    public function setTempsDePassage($tempsDePassage)
+    {
+        $this->tempsDePassage = $tempsDePassage;
     }
 
 }

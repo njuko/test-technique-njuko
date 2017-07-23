@@ -52,6 +52,31 @@ class ParticipantForm extends Form
                 ]
             ],
         ]);
+        
+        $this->add([
+            'name'    => 'NumeroDossard',
+            'type'    => 'Text',
+            'options' => [
+                'label' => 'Numéro Dossard',
+            ],
+        ]);
+        
+        $this->add([
+            'name'    => 'Event',
+            'type'    => 'Text',
+            'options' => [
+                'label' => 'Event',
+            ],
+        ]);
+        
+        $this->add([
+            'name'    => 'TempsDePassage',
+            'type'    => 'Text',
+            'options' => [
+                'label' => 'Temps de passage',
+            ],
+        ]);
+
 
         $this->add([
             'name'       => 'submit',
@@ -61,5 +86,5 @@ class ParticipantForm extends Form
                 'value' => 'Sauvegarder'
             ],
         ]);
-    }
+    
 }
