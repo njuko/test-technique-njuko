@@ -25,6 +25,8 @@ class ClassementController extends AbstractActionController
         $participants = $this-> entityManager-> getRepository('Application/Entity/Participant')-> findAll($tri, SORT_STRING);
         $participantM = $this-> entityManager-> getRepository('Application/Entity/Participant')-> findOneBy('sex' = 'male');
         $participantF = $this-> entityManager-> getRepository('Application/Entity/Participant')-> findOneBy('sex' = 'female');
+        
+        return new ViewModel();
     
     }
 }
