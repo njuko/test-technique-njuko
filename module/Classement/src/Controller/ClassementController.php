@@ -21,6 +21,7 @@ class ClassementController extends AbstractActionController
     
     public function triAction()
     {
+        $tri = $this->getRequest()->getParam('parameters');
         $participants = $this-> entityManager-> getRepository('Application/Entity/Participant')-> findAll();
         $participantM = $this-> entityManager-> getRepository('Application/Entity/Participant')-> findOneBy('sex' = 'male');
         $participantF = $this-> entityManager-> getRepository('Application/Entity/Participant')-> findOneBy('sex' = 'female');
