@@ -12,7 +12,7 @@ class ClassementController extends AbstractActionController
 
         /** TODO : Implementer les classements */
         
-        $participants = $this-> entityManager-> getRepository('Application/Entity/Participant')-> findAll();
+        $participants = $this-> entityManager-> getRepository('Application/Entity/Participant')-> findAll($tri, SORT_STRING);
         $participantM = $this-> entityManager-> getRepository('Application/Entity/Participant')-> findOneBy('sex' = 'male');
         $participantF = $this-> entityManager-> getRepository('Application/Entity/Participant')-> findOneBy('sex' = 'female');
 
@@ -22,7 +22,7 @@ class ClassementController extends AbstractActionController
     public function triAction()
     {
         $tri = $this->getRequest()->getParam('parameters');
-        $participants = $this-> entityManager-> getRepository('Application/Entity/Participant')-> findAll();
+        $participants = $this-> entityManager-> getRepository('Application/Entity/Participant')-> findAll($tri, SORT_STRING);
         $participantM = $this-> entityManager-> getRepository('Application/Entity/Participant')-> findOneBy('sex' = 'male');
         $participantF = $this-> entityManager-> getRepository('Application/Entity/Participant')-> findOneBy('sex' = 'female');
     
