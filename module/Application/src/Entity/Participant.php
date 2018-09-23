@@ -31,6 +31,9 @@ class Participant
      */
     protected $event;
 
+    /** @ORM\Column(type="integer") */
+    protected $bib;
+
     /**
      * @return mixed
      */
@@ -93,6 +96,22 @@ class Participant
     public function setSex($sex)
     {
         $this->sex = $sex;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBib()
+    {
+        return $this->bib;
+    }
+
+    /**
+     * @param mixed $bib
+     */
+    public function setBib($bib)
+    {
+        $this->bib = $bib;
     }
 
     /**
