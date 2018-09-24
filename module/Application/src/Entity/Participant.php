@@ -35,7 +35,7 @@ class Participant
     protected $bib;
 
     /** @ORM\Column(type="time",nullable=true) */
-    private $runtime;
+    protected $runtime;
 
     /**
      * @return mixed
