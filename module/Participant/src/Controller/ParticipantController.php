@@ -27,7 +27,6 @@ class ParticipantController extends AbstractActionController
 
     public function listAction()
     {
-
         $participants = $this->entityManager->getRepository('Application\Entity\Participant')->findAll();
 
         return new ViewModel(
