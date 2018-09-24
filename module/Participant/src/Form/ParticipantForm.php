@@ -81,6 +81,20 @@ class ParticipantForm extends Form implements ObjectManagerAwareInterface
         ]);
 
         $this->add([
+            'name'    => 'runtime',
+            'type'    => 'Zend\Form\Element\Time',
+            'options' => [
+                'label' => 'Temps effectué',
+                'format' => 'H:i:s',
+            ],
+            'attributes' => [
+                'min' => '00:00:00',
+                'max' => '23:59:59',
+                'step' => '1', // seconds
+     ]
+        ]);
+
+        $this->add([
             'name'       => 'submit',
             'type'       => 'submit',
             'attributes' => [
