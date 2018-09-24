@@ -34,10 +34,10 @@ class ParticipantController extends AbstractActionController
                 "participants" => $participants
             )
         );
-
     }
 
-    public function participantFormAction(){
+    public function participantFormAction()
+    {
 
         /** @var \Zend\Form\Form $form */
         $form = $this->formElementManager->get('participant_form');
