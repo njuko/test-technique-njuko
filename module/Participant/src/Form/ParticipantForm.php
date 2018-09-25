@@ -3,16 +3,24 @@
 namespace Participant\Form;
 
 use Zend\Form\Form;
+use DoctrineModule\Persistence\ObjectManagerAwareInterface;
+use Doctrine\Common\Persistence\ObjectManager;
 
-class ParticipantForm extends Form
+class ParticipantForm extends Form implements ObjectManagerAwareInterface
 {
+    protected $objectManager;
+
     public function __construct($name = null)
     {
-
         parent::__construct('user');
 
         $this->setAttribute('class', 'form-horizontal');
+        $this->init();
+    }
 
+
+    public function init()
+    {
         $this->add([
             'name' => 'id',
             'type' => 'Hidden',
@@ -54,6 +62,39 @@ class ParticipantForm extends Form
         ]);
 
         $this->add([
+            'name'    => 'event',
+            'type' => 'DoctrineModule\Form\Element\ObjectSelect',
+            'options' => [
+                'label'          => 'Evènement',
+                'object_manager' => $this->getObjectManager(),
+                'target_class'   => 'Application\Entity\Event',
+                'property'       => 'name',
+            ],
+        ]);
+
+        $this->add([
+            'name'    => 'bib',
+            'type'    => 'Number',
+            'options' => [
+                'label' => 'Numéro de Dossard',
+            ],
+        ]);
+
+        $this->add([
+            'name'    => 'runtime',
+            'type'    => 'Zend\Form\Element\Time',
+            'options' => [
+                'label' => 'Temps effectué',
+                'format' => 'H:i:s',
+            ],
+            'attributes' => [
+                'min' => '00:00:00',
+                'max' => '23:59:59',
+                'step' => '1', // seconds
+     ]
+        ]);
+
+        $this->add([
             'name'       => 'submit',
             'type'       => 'submit',
             'attributes' => [
@@ -61,5 +102,17 @@ class ParticipantForm extends Form
                 'value' => 'Sauvegarder'
             ],
         ]);
+        parent::init();
+    }
+
+
+    public function setObjectManager(ObjectManager $objectManager)
+    {
+        $this->objectManager = $objectManager;
+    }
+
+    public function getObjectManager()
+    {
+        return $this->objectManager;
     }
 }

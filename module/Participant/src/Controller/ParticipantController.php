@@ -27,7 +27,6 @@ class ParticipantController extends AbstractActionController
 
     public function listAction()
     {
-
         $participants = $this->entityManager->getRepository('Application\Entity\Participant')->findAll();
 
         return new ViewModel(
@@ -35,10 +34,10 @@ class ParticipantController extends AbstractActionController
                 "participants" => $participants
             )
         );
-
     }
 
-    public function participantFormAction(){
+    public function participantFormAction()
+    {
 
         /** @var \Zend\Form\Form $form */
         $form = $this->formElementManager->get('participant_form');
@@ -66,34 +65,33 @@ class ParticipantController extends AbstractActionController
 
         if (!$form->isValid()) {
             return ['form' => $form];
-        }else{
-
+        } else {
             $participant = $form->getData();
-
-            /** TODO Modification Evenement (forcer pour le moment) */
-            /** @var \Application\Entity\Event $event */
-            $event = $this->entityManager->getRepository('Application\Entity\Event')->find(1);
-            $participant->setEvent($event);
 
             $this->entityManager->persist($participant);
             $this->entityManager->flush();
 
             return $this->redirect()->toRoute('participant/list');
-
         }
-
-
     }
 
-    public function generateBibNumbersAction(){
-
+    public function generateBibNumbersAction()
+    {
         return $this->redirect()->toRoute('participant/list');
-
     }
 
-    public function deleteAction(){
-
+    public function deleteAction()
+    {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (0 !== $id) {
+            try {
+                $participant = $this->entityManager->getRepository('Application\Entity\Participant')->find($id);
+            } catch (\Exception $e) {
+                return $this->redirect()->toRoute('participant/list');
+            }
+            $this->entityManager->remove($participant);
+            $this->entityManager->flush();
+        }
         return $this->redirect()->toRoute('participant/list');
-
     }
 }

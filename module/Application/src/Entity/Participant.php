@@ -31,6 +31,12 @@ class Participant
      */
     protected $event;
 
+    /** @ORM\Column(type="integer") */
+    protected $bib;
+
+    /** @ORM\Column(type="time",nullable=true) */
+    protected $runtime;
+
     /**
      * @return mixed
      */
@@ -111,4 +117,35 @@ class Participant
         $this->event = $event;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getBib()
+    {
+        return $this->bib;
+    }
+
+    /**
+     * @param mixed $bib
+     */
+    public function setBib($bib)
+    {
+        $this->bib = $bib;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRuntime()
+    {
+        return $this->runtime;
+    }
+
+    /**
+     * @param mixed $runtime
+     */
+    public function setRuntime($runtime)
+    {
+        $this->runtime = $runtime;
+    }
 }
